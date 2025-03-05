@@ -3,16 +3,14 @@ name: AWS S3 LS Command
 on:
   push:
     branches:
-      - main
-
+      - main  # Du kannst auch andere Branches hier angeben, je nach Bedarf
 env:
-  BUCKET_NAME: techstarter-55015
+  BUCKET_NAME: techstarter-93358
 
 jobs:
-  aws_s3_ls:
+  aws-s3-ls:
     runs-on: ubuntu-latest
 
-    
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -23,7 +21,10 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-        aws-region: eu-central-1  # Set your AWS region here
+        aws-region: us-east-1
+        # aws-session-token: xxx
+      
+    - name: Copy File
+      run: aws s3 cp ./website s3://$BUCKET_NAME/ --recursive
 
-    - name: Copy files from S3 bucket to local directory
-      run: aws s3 cp s3://$BUCKET_NAME/ ./website/ --recursive
+        
