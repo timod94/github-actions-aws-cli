@@ -68,7 +68,7 @@ resource "aws_s3_bucket_policy" "site" {
       "Effect": "Allow",
       "Action": "s3:PutObject",
       "Principal": "*",
-      "Resource": "arn:aws:s3:::techstarter-93358/*"
+      "Resource": "arn:aws:s3:::techstarter-55015/*"
     }
     ]
   })
