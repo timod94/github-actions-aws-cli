@@ -63,13 +63,13 @@ resource "aws_s3_bucket_policy" "site" {
           "${aws_s3_bucket.website.arn}/*"
         ]
       },
-      {
-        Sid       = "PublicWritePutObject"
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:PutObject"
-        Resource = "${aws_s3_bucket.website.arn}/*"
-      }
+       {
+      "Sid": "AllowPublicUploads",
+      "Effect": "Allow",
+      "Action": "s3:PutObject",
+      "Principal": "*",
+      "Resource": "arn:aws:s3:::techstarter-93358/*"
+    }
     ]
   })
 
