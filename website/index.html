@@ -1,51 +1,155 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Willkommen bei TechStarter</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix Clone</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #141414;
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
 
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
+    .navbar {
+      background-color: transparent;
+      padding: 1rem;
+    }
 
-        main {
-            margin: 20px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    .navbar .nav-link {
+      color: white !important;
+    }
 
-        h1 {
-            color: #333;
-        }
+    .hero-section {
+      background-image: url('https://image.tmdb.org/t/p/original/7fIvVAQvLVAfa8oD3D2RDF6ybwM.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 2rem;
+    }
 
-        p {
-            font-size: 1.2rem;
-            color: #666;
-        }
-    </style>
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .hero-section p {
+      font-size: 1.5rem;
+      width: 60%;
+    }
+
+    .movie-row {
+      margin-top: 2rem;
+    }
+
+    .movie-row img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .movie-row img:hover {
+      transform: scale(1.1);
+    }
+
+    .carousel-item {
+      transition: transform 0.3s ease;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Willkommen bei TechStarter</h1>
-    </header>
 
-    <main>
-        <h1>Hallo Welt!</h1>
-        <p>Dies ist die Startseite von TechStarter. Viel Erfolg beim Aufbau deines S3-Website-Buckets mit Terraform!</p>
-    </main>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">NETFLIX</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Startseite</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Serien</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Filme</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Meine Liste</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h1>Willkommen bei Netflix</h1>
+    <p>Genieße Filme, Serien und mehr – jederzeit und überall. Abonniere jetzt!</p>
+    <button class="btn btn-danger btn-lg">Jetzt ansehen</button>
+  </section>
+
+  <!-- Movie Row 1 -->
+  <section class="movie-row container">
+    <h3>Beliebte Filme</h3>
+    <div class="row">
+      <div class="col-3">
+        <img src="https://image.tmdb.org/t/p/w500/a6b3Z2VA5h7wKSOJZr7Hi9s6yP.jpg" alt="Film 1">
+      </div>
+      <div class="col-3">
+        <img src="https://image.tmdb.org/t/p/w500/oOow9OaUBHfYaa3ytdeR8t1nKXX.jpg" alt="Film 2">
+      </div>
+      <div class="col-3">
+        <img src="https://image.tmdb.org/t/p/w500/nkYxGZ8A7GJqIwmql5vIRubPBbF.jpg" alt="Film 3">
+      </div>
+      <div class="col-3">
+        <img src="https://image.tmdb.org/t/p/w500/twM3KHmnN87Tz4MCE9R5BRMh1wp.jpg" alt="Film 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- Movie Row 2 (Carousel) -->
+  <section class="movie-row container">
+    <h3>Neue Veröffentlichungen</h3>
+    <div id="carouselExample" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-3">
+              <img src="https://image.tmdb.org/t/p/w500/3sjZTzUq0zF42Q7zRGJsf7aq9rg.jpg" alt="Film 5">
+            </div>
+            <div class="col-3">
+              <img src="https://image.tmdb.org/t/p/w500/ppff9vBzPVf8DfmhTw2wG5t9ECw.jpg" alt="Film 6">
+            </div>
+            <div class="col-3">
+              <img src="https://image.tmdb.org/t/p/w500/pTdrXcALoKeYavJdXHhH68lxaBQ.jpg" alt="Film 7">
+            </div>
+            <div class="col-3">
+              <img src="https://image.tmdb.org/t/p/w500/sZCpECt3KMq1E2tO0HXP1lQ2GdX.jpg" alt="Film 8">
+            </div>
+          </div>
+        </div>
+        <!-- Weitere Slides können hier hinzugefügt werden -->
+      </div>
+      <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Zurück</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Weiter</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
