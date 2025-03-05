@@ -3,7 +3,7 @@ name: AWS S3 LS Command
 on:
   push:
     branches:
-      - main  # Du kannst auch andere Branches hier angeben, je nach Bedarf
+      - main
 env:
   BUCKET_NAME: techstarter-55015
 
