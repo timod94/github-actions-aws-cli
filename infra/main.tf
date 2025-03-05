@@ -1,8 +1,8 @@
 # This is the main configuration file for Terraform. It contains the configuration for the AWS provider and the S3 bucket.
 provider "aws" {
   region = "eu-central-1"
-
 }
+
 # This resource generates a random integer between 10000 and 99999. It is used to create a unique name for the S3 bucket.
 resource "random_integer" "random" {
   min = 10000
@@ -11,6 +11,7 @@ resource "random_integer" "random" {
     always_same = "static_value"
   }
 }
+
 # This is the configuration for the S3 bucket. It creates a bucket with the specified name and enables public access.
 resource "aws_s3_bucket" "website" {
   bucket = "techstarter-${random_integer.random.result}"
@@ -47,6 +48,7 @@ resource "aws_s3_bucket_acl" "site" {
   ]
 }
 
+# This resource configures the bucket policy for the S3 bucket.
 resource "aws_s3_bucket_policy" "site" {
   bucket = aws_s3_bucket.website.id
 
@@ -63,24 +65,22 @@ resource "aws_s3_bucket_policy" "site" {
           "${aws_s3_bucket.website.arn}/*"
         ]
       },
-       {
-      "Sid": "AllowPublicUploads",
-      "Effect": "Allow",
-      "Action": "s3:PutObject",
-      "Principal": "*",
-      "Resource": "arn:aws:s3:::techstarter-55015/*"
-    }
+      {
+        Sid       = "AllowPublicUploads"
+        Effect    = "Allow"
+        Action    = "s3:PutObject"
+        Principal = "*"
+        Resource = "arn:aws:s3:::techstarter-${random_integer.random.result}/*"
+      }
     ]
   })
 
   depends_on = [aws_s3_bucket_public_access_block.site]
 }
 
-
 # This output block defines the output values for the Terraform configuration.
 output "website_url" {
   value = "http://${aws_s3_bucket.website.website_endpoint}/"
-
 }
 
 # Configure the S3 bucket as a static website
@@ -94,5 +94,4 @@ resource "aws_s3_bucket_website_configuration" "example" {
   error_document {
     key = "error.html"
   }
-
 }
