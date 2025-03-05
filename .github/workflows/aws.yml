@@ -24,7 +24,7 @@ jobs:
         aws-region: us-east-1
         # aws-session-token: xxx
       
-    - name: Copy File
+    - name: upload to S3
       run: aws s3 cp ./website s3://$BUCKET_NAME/ --recursive
 
         

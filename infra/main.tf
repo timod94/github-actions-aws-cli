@@ -47,7 +47,6 @@ resource "aws_s3_bucket_acl" "site" {
   ]
 }
 
-# This resource configures the bucket policy for the S3 bucket.
 resource "aws_s3_bucket_policy" "site" {
   bucket = aws_s3_bucket.website.id
 
@@ -64,12 +63,19 @@ resource "aws_s3_bucket_policy" "site" {
           "${aws_s3_bucket.website.arn}/*"
         ]
       },
+      {
+        Sid       = "PublicWritePutObject"
+        Effect    = "Allow"
+        Principal = "*"
+        Action    = "s3:PutObject"
+        Resource = "${aws_s3_bucket.website.arn}/*"
+      }
     ]
   })
 
   depends_on = [aws_s3_bucket_public_access_block.site]
-
 }
+
 
 # This output block defines the output values for the Terraform configuration.
 output "website_url" {
