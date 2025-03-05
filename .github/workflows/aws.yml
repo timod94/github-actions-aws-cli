@@ -5,11 +5,18 @@ on:
     branches:
       - main
 
+env:
+  BUCKET_NAME: techstarter-55015
+
 jobs:
   aws_s3_ls:
     runs-on: ubuntu-latest
+
     
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
     - name: Set up AWS CLI
       uses: aws-actions/configure-aws-credentials@v4
       with:
@@ -17,7 +24,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
         aws-region: eu-central-1  # Set your AWS region here
-      
 
-    - name: Run AWS S3 LS
-      run: aws s3 ls
+    - name: Copy files from S3 bucket to local directory
+      run: aws s3 cp s3://$BUCKET_NAME/ ./website/ --recursive
